@@ -128,6 +128,15 @@ describe("ot", function() {
       var op2 = ["si", ["x"], ["def", 0]];
       expect(ot.transform(op2, op1)).to.eql(["si", ["x"], ["def", 0]]);
     });
+
+    it("should transform by multiple ops at once", function() {
+      var op1 = ["si", ["x"], ["x", 0]];
+      var op2 = ["si", ["x"], ["a", 0]];
+      var op3 = ["si", ["x"], ["b", 1]];
+      var op4 = ["si", ["x"], ["c", 2]];
+      expect(ot.transform(op1, [op2, op3, op4]))
+        .to.eql(["si", ["x"], ["x", 3]]);
+    });
   });
 
 });

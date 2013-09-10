@@ -43,6 +43,9 @@
     },
 
     transform: function(toTrOp, op) {
+      if (Array.isArray(op[0]))
+        return ot._transform_queue(toTrOp, op);
+
       var type = op[0];
 
       switch (type) {
@@ -51,6 +54,14 @@
       case "sd":
         return ot._transform_by_sd(toTrOp, op);
       };
+    },
+
+    _transform_queue: function(toTrOp, queue) {
+      queue.forEach(function(op) {
+        toTrOp = ot.transform(toTrOp, op)
+      });
+
+      return toTrOp;
     },
 
     _transform_by_si: function(op2, op1) {

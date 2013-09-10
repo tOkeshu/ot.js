@@ -20,6 +20,8 @@
         return ot._apply_na(state, opts[0]);
       case "si":
         return ot._apply_si(state, opts[0], opts[1]);
+      case "sd":
+        return ot._apply_sd(state, opts[0], opts[1]);
       };
     },
 
@@ -31,7 +33,14 @@
       var prefix = state.slice(0, offset);
       var suffix = state.slice(offset);
       return prefix + value + suffix;
-    } 
+    },
+
+    _apply_sd: function(state, value, offset) {
+      var prefix = state.slice(0, offset);
+      var string = state.slice(offset, offset + value.length);
+      var suffix = state.slice(offset + value.length);
+      return prefix + suffix;
+    },
 
 
   };

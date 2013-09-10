@@ -70,6 +70,26 @@ describe("ot", function() {
 
     });
 
+    describe("sd", function() {
+
+      it("should delete the begining of the string", function() {
+        var state    = {x: "abc"};
+        var op       = ["sd", ["x"], ["ab", 0]];
+        var newState = ot.apply(state, op);
+
+        expect(newState).to.eql({x: "c"});
+      });
+
+      it("should delete the end of the string", function() {
+        var state    = {x: "abc"};
+        var op       = ["sd", ["x"], ["bc", 1]];
+        var newState = ot.apply(state, op);
+
+        expect(newState).to.eql({x: "a"});
+      });
+
+    });
+
   });
 
 });

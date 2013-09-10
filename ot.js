@@ -48,6 +48,8 @@
       switch (type) {
       case "si":
         return ot._transform_by_si(toTrOp, op);
+      case "sd":
+        return ot._transform_by_sd(toTrOp, op);
       };
     },
 
@@ -62,8 +64,20 @@
       if (index >= shift)
         return [type, path, [newString, index + oldString.length]];
       return op2;
-    }
+    },
 
+    _transform_by_sd: function(op2, op1) {
+      var type      = op2[0];
+      var path      = op2[1];
+      var newString = op2[2][0];
+      var index     = op2[2][1];
+      var oldString = op1[2][0];
+      var shift     = op1[2][1];
+
+      if (index >= shift)
+        return [type, path, [newString, index - oldString.length]];
+      return op2;
+    }
   };
 
   globalScope.ot = ot;

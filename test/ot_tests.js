@@ -111,6 +111,23 @@ describe("ot", function() {
       expect(ot.transform(op2, op1)).to.eql(["sd", ["x"], ["def", 0]]);
     });
 
+    it("should transform sd by sd", function() {
+      var op1 = ["sd", ["x"], ["abc", 0]];
+      var op2 = ["sd", ["x"], ["def", 3]];
+      expect(ot.transform(op2, op1)).to.eql(["sd", ["x"], ["def", 0]]);
+    });
+
+    it("should transform si by sd", function() {
+      var op1 = ["sd", ["x"], ["abc", 0]];
+      var op2 = ["si", ["x"], ["def", 3]];
+      expect(ot.transform(op2, op1)).to.eql(["si", ["x"], ["def", 0]]);
+    });
+
+    it("should NOT transform by sd if the indexes don't colide", function() {
+      var op1 = ["sd", ["x"], ["abc", 3]];
+      var op2 = ["si", ["x"], ["def", 0]];
+      expect(ot.transform(op2, op1)).to.eql(["si", ["x"], ["def", 0]]);
+    });
   });
 
 });

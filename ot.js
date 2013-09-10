@@ -42,6 +42,27 @@
       return prefix + suffix;
     },
 
+    transform: function(toTrOp, op) {
+      var type = op[0];
+
+      switch (type) {
+      case "si":
+        return ot._transform_by_si(toTrOp, op);
+      };
+    },
+
+    _transform_by_si: function(op2, op1) {
+      var type      = op2[0];
+      var path      = op2[1];
+      var newString = op2[2][0];
+      var index     = op2[2][1];
+      var oldString = op1[2][0];
+      var shift     = op1[2][1];
+
+      if (index >= shift)
+        return [type, path, [newString, index + oldString.length]];
+      return op2;
+    }
 
   };
 

@@ -92,4 +92,25 @@ describe("ot", function() {
 
   });
 
+  describe("#transform", function() {
+    it("should transform si by si", function() {
+      var op1 = ["si", ["x"], ["abc", 0]];
+      var op2 = ["si", ["x"], ["def", 0]];
+      expect(ot.transform(op2, op1)).to.eql(["si", ["x"], ["def", 3]]);
+    });
+
+    it("should transform sd by si", function() {
+      var op1 = ["si", ["x"], ["abc", 0]];
+      var op2 = ["sd", ["x"], ["def", 0]];
+      expect(ot.transform(op2, op1)).to.eql(["sd", ["x"], ["def", 3]]);
+    });
+
+    it("should NOT transform by si if the indexes don't colide", function() {
+      var op1 = ["si", ["x"], ["abc", 3]];
+      var op2 = ["sd", ["x"], ["def", 0]];
+      expect(ot.transform(op2, op1)).to.eql(["sd", ["x"], ["def", 0]]);
+    });
+
+  });
+
 });

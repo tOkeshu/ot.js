@@ -18,12 +18,21 @@
       switch (type) {
       case "na":
         return ot._apply_na(state, opts[0]);
+      case "si":
+        return ot._apply_si(state, opts[0], opts[1]);
       };
     },
 
     _apply_na: function(state, value) {
       return state + value;
-    }
+    },
+
+    _apply_si: function(state, value, offset) {
+      var prefix = state.slice(0, offset);
+      var suffix = state.slice(offset);
+      return prefix + value + suffix;
+    } 
+
 
   };
 

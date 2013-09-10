@@ -49,5 +49,27 @@ describe("ot", function() {
       });
 
     });
+
+    describe("si", function() {
+
+      it("should append a string", function() {
+        var state    = {x: "abc"};
+        var op       = ["si", ["x"], ["def", 3]];
+        var newState = ot.apply(state, op);
+
+        expect(newState).to.eql({x: "abcdef"});
+      });
+
+      it("should prepend a string", function() {
+        var state    = {x: "abc"};
+        var op       = ["si", ["x"], ["def", 0]];
+        var newState = ot.apply(state, op);
+
+        expect(newState).to.eql({x: "defabc"});
+      });
+
+    });
+
   });
+
 });

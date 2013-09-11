@@ -1,6 +1,7 @@
 {
   "name": "ot",
   "version": "0.0.1",
+  "homepage": "https://github.com/tOkeshu/ot.js",
   "authors": [
     "Romain Gauthier <romain.gauthier@monkeypatch.me>"
   ],

@@ -1,0 +1,24 @@
+{
+  "name": "ot",
+  "version": "0.0.1",
+  "authors": [
+    "Romain Gauthier <romain.gauthier@monkeypatch.me>"
+  ],
+  "description": "A pure JavaScript library to work with operational transformations",
+  "main": "ot.js",
+  "keywords": [
+    "Operational Transformation"
+  ],
+  "license": "Apache License 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~1.12.1",
+    "expect": "~0.2.0"
+  }
+}
